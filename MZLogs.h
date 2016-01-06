@@ -1,3 +1,11 @@
+//
+//  MZLogs.h
+//  MZ-ObjC
+//
+//  Created by Inaba Mizuki on 2013/11/29.
+//  Copyright (c) 2013年 Inaba Mizuki. All rights reserved.
+//
+
 #ifndef MZDEBUG
 #define MZDEBUG 0
 #endif
