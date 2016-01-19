@@ -11,7 +11,7 @@
 #endif
 
 #if MZDEBUG
-#define MZLog(desc, ...) printf("%s: %s\n", __func__, [[NSString stringWithFormat:(desc), ##__VA_ARGS__] UTF8String])
+#define MZLog(desc, ...) printf("%s(%d): %s\n", __func__, __LINE__, [[NSString stringWithFormat:(desc), ##__VA_ARGS__] UTF8String])
 #define MZLogString(str) MZLog(@"%@", str)
 #define MZLogCurrentFunction() MZLog(@"")
 #define MZLogPoint(point) MZLog(@"%@", NSStringFromCGPoint(point))
