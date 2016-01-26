@@ -1,4 +1,10 @@
-// TODO: 角度計算函數需要重新設計, 使之更加直觀, 簡短 ...
+//
+//  MZMath.h
+//  MZ-ObjC
+//
+//  Created by Inaba Mizuki on 2013/11/29.
+//  Copyright (c) 2013年 Inaba Mizuki. All rights reserved.
+//
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
@@ -12,6 +18,7 @@
 +(bool)isPointValid:(CGPoint)point;
 
 +(int)randomIntInRangeMin:(int)min max:(int)max;
++ (float)randomFloatWithMin:(float)min max:(float)max;
 
 // 判斷傳入角度位於第幾象限(無法判斷 0, 90, 180, 270)
 +(int)quadrantNumberOfDegrees:(float)degrees;

@@ -1,3 +1,11 @@
+//
+//  MZMath.m
+//  MZ-ObjC
+//
+//  Created by Inaba Mizuki on 2013/11/29.
+//  Copyright (c) 2013年 Inaba Mizuki. All rights reserved.
+//
+
 #import "MZMath.h"
 #import "MZFormula.h"
 
@@ -23,6 +31,14 @@
     int length = max - min + 1;
     return min + (arc4random()%length);
 }
+
++ (float)randomFloatWithMin:(float)min max:(float)max {
+    if (min >= max) { return min; }
+
+    float r =  (float)arc4random()/(float)UINT32_MAX;
+    return ((r * (max - min)) + min);
+}
+
 
 +(int)quadrantNumberOfDegrees:(float)degrees {
     float _deg = [MZMath formatDegrees: degrees];
