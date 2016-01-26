@@ -2,22 +2,17 @@
 
 @implementation MZMapReduces
 
-+(bool)mapWithArray:(NSArray* )array action:(MZMapActionBlock)action {
-    return MZMap(array, action);
++ (NSArray *)mapWithArray:(NSArray* )array func:(MZMapFunc)func {
+    NSMutableArray* resultArray = [NSMutableArray array];
+    for (id element in array) { [resultArray addObject:func(element)]; }
+
+    return resultArray;
 }
 
-+(bool)mapWithArray:(NSArray *)array actionWithIndex:(MZMapActionBlockWithIndex)action {
-    return MZMapWithIndex(array, action);
-}
-
-+(bool)mapWithArray:(NSArray *)array actionWithIndex:(MZMapActionBlockWithIndex)action start:(int)start end:(int)end {
-    return MZMapWithRange(array, action, start, end);
-}
-
-+(void)__fixWarnings {
-    MZMap(nil, nil);
-    MZMapWithIndex(nil, nil);
-    MZMapWithRange(nil, nil, 0, 0);
++ (void)forEachWithArray:(NSArray* )array action:(MZForEachAction)action {
+    for (id element in array) {
+        action(element);
+    }
 }
 
 @end
