@@ -14,16 +14,16 @@
 
 // as Swift: guard let x = y else { return }
 #define mz_guard_let_return(lhs, rhs) \
-mz_gen_var(lhs, rhs); \
-if (lhs == nil) { return; }
+    mz_gen_var(lhs, rhs); \
+    if (lhs == nil) { return; }
 
 
 #define mz_guard_let_action_return(lhs, rhs, action) \
-mz_gen_var(lhs, rhs); \
-if (lhs == nil) { \
-    if ((action)) { action(); } \
-    return; \
-}
+    mz_gen_var(lhs, rhs); \
+    if (lhs == nil) { \
+        if ((action)) { action(); } \
+        return; \
+    }
 
 #endif /* MZCodeMiracle_h */
 

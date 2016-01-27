@@ -15,7 +15,8 @@
 #endif
 
 #if MZDEBUG
-#define MZLog(desc, ...) printf("%s(%d): %s\n", __func__, __LINE__, [[NSString stringWithFormat:(desc), ##__VA_ARGS__] UTF8String])
+#define MZLog(desc, ...) \
+    printf("%s(%d): %s\n", __func__, __LINE__, [[NSString stringWithFormat:(desc), ##__VA_ARGS__] UTF8String])
 #define MZLogString(str) MZLog(@"%@", str)
 #define MZLogFunctionName() MZLog(@"")
 #define MZLogPoint(point) MZLog(@"%@", NSStringFromCGPoint(point))
@@ -37,19 +38,17 @@
 #endif
 
 #if MZDEBUG
-#define MZAssert(condition, desc, ...)                                                                              \
-if (!(condition)) {                                                                                             \
-NSLog(@"*** Assertion failure in %s: %@", __FUNCTION__, [NSString stringWithFormat:(desc), ##__VA_ARGS__]); \
-[[NSAssertionHandler currentHandler] handleFailureInFunction:[NSString stringWithUTF8String:__FUNCTION__]   \
-file:[NSString stringWithUTF8String:__FILE__]       \
-lineNumber:__LINE__                                       \
-description:(desc), ##__VA_ARGS__];                        \
-}                                                                                                               \
-do {                                                                                                            \
-} while (!(condition))
+#define MZAssert(condition, desc, ...) \
+    if (!(condition)) { \
+        printf("** Assert Fail **\n"); \
+        printf("  message: %s\n", [[NSString stringWithFormat:(desc), ##__VA_ARGS__] UTF8String]); \
+        printf("  in %s(%d)\n", __func__, __LINE__); \
+        printf("** ** ** ** ** **\n"); \
+        abort(); \
+    }
 
-#define MZWarning(condition, desc, ...)                                                                   \
-if (!(condition)) {                                                                                   \
+#define MZWarning(condition, desc, ...) \
+if (!(condition)) { \
 NSLog(@"*** Warning in %s: %@", __FUNCTION__, [NSString stringWithFormat:(desc), ##__VA_ARGS__]); \
 }
 #else
