@@ -6,6 +6,10 @@
 //  Copyright (c) 2013年 Inaba Mizuki. All rights reserved.
 //
 
+// Log 不使用 inline function:
+// - 要保持 MZDEBUG flag 不成立時, 不會產生任何 code
+// - 除非 objc 有和 swift 一樣, 對於無內容的函數會作最佳化處理
+
 #ifndef MZDEBUG
 #define MZDEBUG 0
 #endif
@@ -13,7 +17,7 @@
 #if MZDEBUG
 #define MZLog(desc, ...) printf("%s(%d): %s\n", __func__, __LINE__, [[NSString stringWithFormat:(desc), ##__VA_ARGS__] UTF8String])
 #define MZLogString(str) MZLog(@"%@", str)
-#define MZLogCurrentFunction() MZLog(@"")
+#define MZLogFunctionName() MZLog(@"")
 #define MZLogPoint(point) MZLog(@"%@", NSStringFromCGPoint(point))
 #define MZLogSize(size) MZLog(@"%@", NSStringFromCGSize(size))
 #define MZLogRect(rect) MZLog(@"%@", NSStringFromCGRect(rect))
@@ -23,7 +27,7 @@
 #else
 #define MZLog(desc, ...)
 #define MZLogString(str)
-#define MZLogCurrentFunction()
+#define MZLogFunctionName()
 #define MZLogPoint(point)
 #define MZLogSize(size)
 #define MZLogRect(rect)
