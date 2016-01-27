@@ -1,5 +1,10 @@
-// Requires
-//  - CoreGraphics.framework
+//
+//  MZCGExtensions.h
+//  MZ-ObjC
+//
+//  Created by Inaba Mizuki on 2013/11/29.
+//  Copyright (c) 2013年 Inaba Mizuki. All rights reserved.
+//
 
 #ifndef MZCGExtensions_h
 #define MZCGExtensions_h
