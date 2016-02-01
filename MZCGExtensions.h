@@ -19,33 +19,45 @@
 
 #define CGPointOne CGPointMake(1, 1)
 
-static inline CGPoint CGPointAdd(CGPoint lhs, CGPoint rhs) {
+NS_INLINE CGPoint CGPointAdd(CGPoint lhs, CGPoint rhs) {
     return CGPointMake(lhs.x + rhs.x, lhs.y + rhs.y);
 }
 
-static inline CGPoint CGPointSub(const CGPoint lhs, const CGPoint rhs) {
+NS_INLINE CGPoint CGPointSub(const CGPoint lhs, const CGPoint rhs) {
     return CGPointMake(lhs.x - rhs.x, lhs.y - rhs.y);
 }
 
-static inline CGPoint CGPointMul(const CGPoint lhs, const CGFloat rhs) {
+NS_INLINE CGPoint CGPointMul(const CGPoint lhs, const CGFloat rhs) {
     return CGPointMake(lhs.x * rhs, lhs.y * rhs);
 }
 
-static inline CGPoint CGPointDiv(const CGPoint lhs, const CGFloat rhs) {
+NS_INLINE CGPoint CGPointDiv(const CGPoint lhs, const CGFloat rhs) {
     return CGPointMake(lhs.x / rhs, lhs.y / rhs);
 }
 
 #pragma NS Support
 
-static inline NSValue* NSValueFromCGPoint(CGPoint p) { return [NSValue valueWithCGPoint:p]; }
+NS_INLINE NSValue* NSValueFromCGPoint(CGPoint p) { return [NSValue valueWithCGPoint:p]; }
 
-static inline NSValue* NSCGPointValueFromXY(const GLfloat x, const GLfloat y) {
+NS_INLINE NSValue* NSCGPointValueFromXY(const GLfloat x, const GLfloat y) {
     return [NSValue valueWithCGPoint:CGPointMake(x, y)];
 }
 
 #pragma mark - CGRect
 
-static inline CGRect CGRectSetScale(CGRect rect, float scale) {
+NS_INLINE CGRect CGRectFromSize(CGSize size) {
+    return CGRectMake(0, 0, size.width, size.height);
+}
+
+NS_INLINE CGRect CGRectSetOrigin(CGRect rect, CGPoint origin) {
+    return CGRectMake(origin.x, origin.y, rect.size.width, rect.size.height);
+}
+
+NS_INLINE CGRect CGRectSetSize(CGRect rect, CGSize size) {
+    return CGRectMake(rect.origin.x, rect.origin.y, size.width, size.height);
+}
+
+NS_INLINE CGRect CGRectSetScale(CGRect rect, float scale) {
     if (scale == 0) return CGRectZero;
 
     float w = rect.size.width * scale;
@@ -55,7 +67,7 @@ static inline CGRect CGRectSetScale(CGRect rect, float scale) {
     return CGRectMake(rect.origin.x + offset.x, rect.origin.y + offset.y, w, h);
 }
 
-static inline CGRect CGRectSetScaleXY(CGRect rect, float scaleX, float scaleY) {
+NS_INLINE CGRect CGRectSetScaleXY(CGRect rect, float scaleX, float scaleY) {
     float w = rect.size.width * scaleX;
     float h = rect.size.height * scaleY;
     CGPoint offset = CGPointMake((rect.size.width - w) / 2.0, (rect.size.height - h) / 2.0);
@@ -63,21 +75,21 @@ static inline CGRect CGRectSetScaleXY(CGRect rect, float scaleX, float scaleY) {
     return CGRectMake(rect.origin.x + offset.x, rect.origin.y + offset.y, w, h);
 }
 
-static inline CGPoint CGRectGetLeftBottom(CGRect rect) { return CGPointMake(rect.origin.x, rect.origin.y); }
+NS_INLINE CGPoint CGRectGetBottomLeft(CGRect rect) { return CGPointMake(rect.origin.x, rect.origin.y); }
 
-static inline CGPoint CGRectGetRightBottom(CGRect rect) {
+NS_INLINE CGPoint CGRectGetBottomRight(CGRect rect) {
     return CGPointMake(rect.origin.x + rect.size.width, rect.origin.y);
 }
 
-static inline CGPoint CGRectGetLeftTop(CGRect rect) {
+NS_INLINE CGPoint CGRectGetTopLeft(CGRect rect) {
     return CGPointMake(rect.origin.x, rect.origin.y + rect.size.height);
 }
 
-static inline CGPoint CGRectGetRightTop(CGRect rect) {
+NS_INLINE CGPoint CGRectGetTopRight(CGRect rect) {
     return CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
 }
 
-static inline CGPoint CGRectGetCenter(CGRect rect) {
+NS_INLINE CGPoint CGRectGetCenter(CGRect rect) {
     return CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
 }
 

@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray *)mapWithFunc:(id (^)(id element))func;
 - (void)forEachWithAction:(void (^)(id element))action;
 - (NSArray *)filterWithFunc:(bool (^)(id element))func;
+- (NSArray *)reversedArray;
 @end
 
 @interface NSDictionary (MZExtension)
