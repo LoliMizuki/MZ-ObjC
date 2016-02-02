@@ -45,29 +45,29 @@ NS_INLINE NSValue* NSCGPointValueFromXY(const GLfloat x, const GLfloat y) {
 
 #pragma mark - CGRect
 
-NS_INLINE CGRect CGRectFromSize(CGSize size) {
+NS_INLINE CGRect CGRectFromSize(const CGSize size) {
     return CGRectMake(0, 0, size.width, size.height);
 }
 
-NS_INLINE CGRect CGRectSetOrigin(CGRect rect, CGPoint origin) {
+NS_INLINE CGRect CGRectWithOrigin(const CGRect rect, const CGPoint origin) {
     return CGRectMake(origin.x, origin.y, rect.size.width, rect.size.height);
 }
 
-NS_INLINE CGRect CGRectSetSize(CGRect rect, CGSize size) {
+NS_INLINE CGRect CGRectWithSize(const CGRect rect, const CGSize size) {
     return CGRectMake(rect.origin.x, rect.origin.y, size.width, size.height);
 }
 
-NS_INLINE CGRect CGRectSetScale(CGRect rect, float scale) {
+NS_INLINE CGRect CGRectWithScale(const CGRect rect, const float scale) {
     if (scale == 0) return CGRectZero;
 
-    float w = rect.size.width * scale;
-    float h = rect.size.height * scale;
+    float w = rect.size.width*scale;
+    float h = rect.size.height*scale;
     CGPoint offset = CGPointMake((rect.size.width - w) / 2.0, (rect.size.height - h) / 2.0);
 
     return CGRectMake(rect.origin.x + offset.x, rect.origin.y + offset.y, w, h);
 }
 
-NS_INLINE CGRect CGRectSetScaleXY(CGRect rect, float scaleX, float scaleY) {
+NS_INLINE CGRect CGRectWithScaleXY(const CGRect rect, const float scaleX, const float scaleY) {
     float w = rect.size.width * scaleX;
     float h = rect.size.height * scaleY;
     CGPoint offset = CGPointMake((rect.size.width - w) / 2.0, (rect.size.height - h) / 2.0);
@@ -75,21 +75,23 @@ NS_INLINE CGRect CGRectSetScaleXY(CGRect rect, float scaleX, float scaleY) {
     return CGRectMake(rect.origin.x + offset.x, rect.origin.y + offset.y, w, h);
 }
 
-NS_INLINE CGPoint CGRectGetBottomLeft(CGRect rect) { return CGPointMake(rect.origin.x, rect.origin.y); }
+NS_INLINE CGPoint CGRectGetBottomLeft(const CGRect rect) {
+    return CGPointMake(rect.origin.x, rect.origin.y);
+}
 
-NS_INLINE CGPoint CGRectGetBottomRight(CGRect rect) {
+NS_INLINE CGPoint CGRectGetBottomRight(const CGRect rect) {
     return CGPointMake(rect.origin.x + rect.size.width, rect.origin.y);
 }
 
-NS_INLINE CGPoint CGRectGetTopLeft(CGRect rect) {
+NS_INLINE CGPoint CGRectGetTopLeft(const CGRect rect) {
     return CGPointMake(rect.origin.x, rect.origin.y + rect.size.height);
 }
 
-NS_INLINE CGPoint CGRectGetTopRight(CGRect rect) {
+NS_INLINE CGPoint CGRectGetTopRight(const CGRect rect) {
     return CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
 }
 
-NS_INLINE CGPoint CGRectGetCenter(CGRect rect) {
+NS_INLINE CGPoint CGRectGetCenter(const CGRect rect) {
     return CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
 }
 
