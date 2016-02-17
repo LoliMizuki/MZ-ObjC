@@ -35,6 +35,10 @@ NS_INLINE CGPoint CGPointDiv(const CGPoint lhs, const CGFloat rhs) {
     return CGPointMake(lhs.x / rhs, lhs.y / rhs);
 }
 
+NS_INLINE BOOL CGPointIsNaN(CGPoint point) {
+    return isnan(point.x) || isnan(point.y); // or (x!=x)
+}
+
 #pragma NS Support
 
 NS_INLINE NSValue* NSValueFromCGPoint(CGPoint p) { return [NSValue valueWithCGPoint:p]; }
