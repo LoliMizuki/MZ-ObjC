@@ -15,7 +15,6 @@
 
 - (instancetype)initWithFirst:(id)aFirst second:(id)aSecond {
     self = [super init];
-    if (self == nil) return self;
 
     first = aFirst;
     second = aSecond;

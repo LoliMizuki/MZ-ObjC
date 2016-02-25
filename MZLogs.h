@@ -18,13 +18,16 @@
 #define MZLog(desc, ...) \
     printf("%s(%d): %s\n", __func__, __LINE__, [[NSString stringWithFormat:(desc), ##__VA_ARGS__] UTF8String])
 #define MZLogString(str) MZLog(@"%@", str)
-#define MZLogFunctionName() MZLog(@"")
+#define MZLogFunctionName() MZLog(@"%s", __func__)
 #define MZLogPoint(point) MZLog(@"%@", NSStringFromCGPoint(point))
 #define MZLogSize(size) MZLog(@"%@", NSStringFromCGSize(size))
 #define MZLogRect(rect) MZLog(@"%@", NSStringFromCGRect(rect))
 #define MZLogMessagePoint(message, point) MZLog(@"%@: %@", message, NSStringFromCGPoint(point))
 #define MZLogBool(boolValue) MZLog(@"%@", (boolValue) ? @"TRUE" : @"FALSE")
 #define MZLogMessageBool(message, boolValue) MZLog(@"%@: %@", message, (boolValue) ? @"TRUE" : @"FALSE")
+#define MZBundlePath() NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).firstObject
+#define MZLogBundlePath() MZLog(@"%@", MZBundlePath())
+#define MZPrintBundlePath() printf("%s", [MZBundlePath() UTF8String])
 #else
 #define MZLog(desc, ...)
 #define MZLogString(str)
@@ -35,6 +38,9 @@
 #define MZLogMessagePoint(message, point)
 #define MZLogBool(boolValue)
 #define MZLogMessageBool(message, boolValue)
+#define MZBundlePath()
+#define MZLogBundlePath()
+#define MZPrintBundlePath()
 #endif
 
 #if MZDEBUG
