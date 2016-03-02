@@ -99,4 +99,22 @@ NS_INLINE CGPoint CGRectGetCenter(const CGRect rect) {
     return CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
 }
 
+# pragma mark - CGColor
+
+// CGColorEqualToColor is suck, do't use
+NS_INLINE BOOL CGColorIsEqual(CGColorRef c1, CGColorRef c2, BOOL ignoreAlpha) {
+    CGFloat tolerance = 0.01;
+
+    const CGFloat* c1Components = CGColorGetComponents(c1);
+    const CGFloat* c2Components = CGColorGetComponents(c2);
+
+    BOOL alphaResult = (ignoreAlpha)? true : fabs(c1Components[3] - c2Components[3]) < tolerance;
+
+
+    return  (fabs(c1Components[0] - c2Components[0]) < tolerance) &&
+            (fabs(c1Components[1] - c2Components[1]) < tolerance) &&
+            (fabs(c1Components[2] - c2Components[2]) < tolerance) &&
+            alphaResult;
+}
+
 #endif

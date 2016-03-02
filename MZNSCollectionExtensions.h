@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MZPair : NSObject
-@property (nonatomic, readonly) id first;
-@property (nonatomic, readonly) id second;
+@property (readonly, nonatomic) id first;
+@property (readonly, nonatomic) id second;
 - (instancetype)initWithFirst:(id)aFirst second:(id)aSecond;
 @end
 
