@@ -1,6 +1,6 @@
 //
 //  MZUIExtensions.h
-//  AsenseTek
+//  MZ-ObjC
 //
 //  Created by Inaba Mizuki on 2016/3/3.
 //  Copyright © 2016年 Inaba Mizuki. All rights reserved.
