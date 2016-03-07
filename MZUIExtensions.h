@@ -3,7 +3,7 @@
 //  MZ-ObjC
 //
 //  Created by Inaba Mizuki on 2016/3/3.
-//  Copyright © 2016年 Inaba Mizuki. All rights reserved.
+//  Copyright (c) 2013年 Inaba Mizuki. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
