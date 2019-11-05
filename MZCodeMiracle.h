@@ -17,13 +17,21 @@
     mz_var(lhs, rhs); \
     if (lhs == nil) { return; }
 
-
 #define mz_guard_let_return_with_action(lhs, rhs, elseAction) \
     mz_var(lhs, rhs); \
     if (lhs == nil) { \
         if ((elseAction)) { elseAction(); } \
         return; \
     }
+
+// e.g: NSString* str = mz_value_with_default([self getString], @"default string");
+// as Swift: let str = getString() ?? "default string"
+#define mz_value_with_default(value, default_value) \
+    (value != nil) ? value : default_value
+
+// e.g: mz_var_with_default(str, [self getString], @"default string");
+#define mz_var_with_default(lhs, rhs, default_value) \
+    mz_var(lhs, mz_value_with_default(rhs, default_value))
 
 #endif /* MZCodeMiracle_h */
 
