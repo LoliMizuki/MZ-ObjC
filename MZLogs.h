@@ -6,10 +6,6 @@
 //  Copyright (c) 2013年 Inaba Mizuki. All rights reserved.
 //
 
-// Log 不使用 inline function:
-// - 要保持 MZDEBUG flag 不成立時, 不會產生任何 code
-// - 除非 objc 有和 swift 一樣, 對於無內容的函數會作最佳化處理
-
 #ifndef MZDEBUG
 #define MZDEBUG 0
 #endif
